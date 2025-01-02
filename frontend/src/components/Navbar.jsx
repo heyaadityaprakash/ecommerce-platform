@@ -5,7 +5,7 @@ import { ShopContext } from '../context/ShopContext.jsx';
 function Navbar() {
 
     const[visible,setVisible]=useState(false)
-    const {setShowSearch}=useContext(ShopContext)
+    const {setShowSearch,getCartCount}=useContext(ShopContext)
     return (  
         <div className='flex item-center justify-between py-5 px-4 font-medium'>
             <Link to={'/'}>
@@ -37,7 +37,7 @@ function Navbar() {
             <img src={assets.search_icon} className=' cursor-pointer h-7 ' onClick={()=>setShowSearch(true)} alt="" />
 
             <div className='group relative'>
-                <img src={assets.profile_icon} className='cursor-pointer w-6' alt="" />
+                <Link to={'/login'}><img src={assets.profile_icon} className='cursor-pointer w-6' alt="" /></Link>
                 <div className='group-hover:block hidden absolute dropdown-menu right-0 pt-4'>
                     <div className='flex flex-col gap-2 w-40 p-2 items-center  text-gray-500 bg-slate-200 rounded'>
                         <p className='hover:text-black cursor-pointer'>My Profile</p>
@@ -49,7 +49,7 @@ function Navbar() {
 
             <Link to='/cart' className='relative'> 
                 <img src={assets.cart_icon} className='w-6 min-w-6' alt="" />
-                <p className='absolute right-[0px] bottom-[10px] px-1 text-center leading-4 bg-black text-white text-[8px] rounded-full  aspect-square'>2</p>
+                <p className='absolute right-[0px] bottom-[10px] px-1 text-center leading-4 bg-black text-white text-[8px] rounded-full  aspect-square'>{getCartCount()}</p>
             </Link>
 
 
