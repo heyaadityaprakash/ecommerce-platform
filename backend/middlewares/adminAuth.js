@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken'
 // admin permissions authenticator
 
 
-const admniAuth=async(req,res)=>{
+const admniAuth=async(req,res,next)=>{
     try {
         const {token}=req.headers
         if(!token){
